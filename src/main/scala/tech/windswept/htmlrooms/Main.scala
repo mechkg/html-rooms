@@ -86,9 +86,14 @@ object Main {
 
     document.getElementById("algorithmSelect").asInstanceOf[HTMLSelectElement].value match {
       case "1" =>
-        algorithmState = Some(SeparationAlgorithm.init(number, 2, 15))
+        algorithmState = Some(SeparationAlgorithm.init(number, 4, 15))
         updateIntervalId = Some(window.setInterval(() => update, updateInterval))
-
+      case "2" =>
+        algorithmState = Some(MinDistanceAlgorithm.init(number, 4, 15))
+        updateIntervalId = Some(window.setInterval(() => update, updateInterval))
+      case "3" =>
+        algorithmState = Some(TetrisAlgorithm.init(number, 4, 15))
+        updateIntervalId = Some(window.setInterval(() => update, updateInterval))
       case x => console.error(s"Unexpected algorithm value: $x")
     }
   }
